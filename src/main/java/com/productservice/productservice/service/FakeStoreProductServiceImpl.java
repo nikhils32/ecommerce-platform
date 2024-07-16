@@ -4,6 +4,8 @@ import com.productservice.productservice.dto.FakeStoreProductDTO;
 import com.productservice.productservice.dto.GenericProductDTO;
 import com.productservice.productservice.exception.ProductException;
 import com.productservice.productservice.thirdpartyclients.fakestoreclient.Fakestoreclient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,6 @@ public class FakeStoreProductServiceImpl implements ProductService{
 //    private RestTemplateBuilder restTemplateBuilder;
 
     private Fakestoreclient fakestoreclient;
-
-    private String getProductUrl = "https://fakestoreapi.com/products/{id}";
-
-    private String getAllProductsUrl = "https://fakestoreapi.com/products";
 
     public FakeStoreProductServiceImpl(Fakestoreclient fakestoreClient) {
         this.fakestoreclient = fakestoreClient;

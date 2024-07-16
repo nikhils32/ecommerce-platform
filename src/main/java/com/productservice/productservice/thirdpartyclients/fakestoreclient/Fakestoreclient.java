@@ -3,6 +3,7 @@ package com.productservice.productservice.thirdpartyclients.fakestoreclient;
 import com.productservice.productservice.dto.FakeStoreProductDTO;
 import com.productservice.productservice.dto.GenericProductDTO;
 import com.productservice.productservice.exception.ProductException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +18,20 @@ import java.util.List;
 public class Fakestoreclient {
     private RestTemplateBuilder restTemplateBuilder;
 
-    private String getProductUrl = "https://fakestoreapi.com/products/{id}";
 
-    private String getAllProductsUrl = "https://fakestoreapi.com/products";
+//    private String fakestoreuri;
+//
+//    private String pathforproducts;
 
-    public Fakestoreclient(RestTemplateBuilder restTemplateBuilder) {
+    private String getProductUrl; // = fakestoreuri + pathforproducts + "/{id}";
+
+    private String getAllProductsUrl; // = fakestoreuri + pathforproducts;
+
+
+    public Fakestoreclient(RestTemplateBuilder restTemplateBuilder, @Value("${fakestore.uri}") String fakestoreuri, @Value("${fakestore.uri.path.products}") String pathforproducts) {
         this.restTemplateBuilder = restTemplateBuilder;
+        this.getAllProductsUrl = fakestoreuri + pathforproducts;
+        this.getProductUrl = fakestoreuri + pathforproducts + "/{id}";
     }
 
     public List<FakeStoreProductDTO> getProducts() {

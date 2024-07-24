@@ -7,6 +7,7 @@ import com.productservice.productservice.model.Product;
 import com.productservice.productservice.repositories.CategoryRepository;
 import com.productservice.productservice.repositories.PriceRepository;
 import com.productservice.productservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -50,6 +51,7 @@ public class ProductServiceApplication implements CommandLineRunner {
     }
 
     @Override
+    // @Transactional
     public void run(String... args) throws Exception {
         // Category category = new Category();
         // category.setName("Apple Devices");
@@ -76,26 +78,30 @@ public class ProductServiceApplication implements CommandLineRunner {
 ////            System.out.println(product.getTitle());
 ////        }
 //
-        Price price = new Price();
-        price.setCurrency("INR");
-        price.setValue(100000);
-        // Price savedPrice = priceRepository.save(price);
-
-        Category category2 = new Category();
-        category2.setName("Apple Devices");
-        Category savedCategoy = categoryRepository.save(category2);
-
-        Product product1 = new Product();
-        product1.setTitle("iPhone 15 pro");
-        product1.setDescription("Best iPhone ever");
-        product1.setCategory(savedCategoy);
-        // product1.setPrice(savedPrice);
-        product1.setPrice(price);
-
-        Product savedProduct1 = productRepository.save(product1);
+//        Price price = new Price();
+//        price.setCurrency("INR");
+//        price.setValue(100000);
+//        // Price savedPrice = priceRepository.save(price);
+//
+//        Category category2 = new Category();
+//        category2.setName("Apple Devices");
+//        Category savedCategoy = categoryRepository.save(category2);
+//
+//        Product product1 = new Product();
+//        product1.setTitle("iPhone 15 pro");
+//        product1.setDescription("Best iPhone ever");
+//        product1.setCategory(savedCategoy);
+//        // product1.setPrice(savedPrice);
+//        product1.setPrice(price);
+//
+//        Product savedProduct1 = productRepository.save(product1);
 
 //        productRepository.deleteById(UUID.fromString("111bb398-e46e-49f8-a271-ca6869d16825"));
-}
+        List<Product> products = this.productRepository.findAll();
+        for (Product product : products) {
+            System.out.println(product.getTitle());
+        }
+    }
 
 //    @Override
 //    public void run(String... args) throws Exception {

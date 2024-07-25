@@ -15,7 +15,8 @@ public class ProductController {
     private ProductService productService;
 
     // @Autowired --> optional in new versions of Spring
-    ProductController(@Qualifier("fakeStoreProductService") ProductService productService){
+    // @Qualifier("fakeStoreProductService")
+    ProductController(ProductService productService){
         this.productService = productService;
     }
 

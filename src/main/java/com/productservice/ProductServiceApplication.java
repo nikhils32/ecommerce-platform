@@ -1,30 +1,19 @@
-package com.productservice.productservice;
+package com.productservice;
 
-import com.productservice.productservice.inheritancerelations.tableperclass.*;
-import com.productservice.productservice.model.Category;
-import com.productservice.productservice.model.Price;
 import com.productservice.productservice.model.Product;
 import com.productservice.productservice.repositories.CategoryRepository;
 import com.productservice.productservice.repositories.PriceRepository;
 import com.productservice.productservice.repositories.ProductRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 //@EnableDiscoveryClient
 
 @SpringBootApplication
-public class ProductServiceApplication { // implements CommandLineRunner {
+public class ProductServiceApplication implements CommandLineRunner {
 
 //    private final MentorRepository mentorRepository;
 //    private final StudentRepository studentRepository;
@@ -82,23 +71,23 @@ public class ProductServiceApplication { // implements CommandLineRunner {
 ////            System.out.println(product.getTitle());
 ////        }
 
-        Price price = new Price();
-        price.setCurrency("INR");
-        price.setValue(100000);
-        // Price savedPrice = priceRepository.save(price);
-
-        Category category2 = new Category();
-        category2.setName("Apple Devices");
-        Category savedCategoy = categoryRepository.save(category2);
-
-        Product product1 = new Product();
-        product1.setTitle("iPhone 15 pro");
-        product1.setDescription("Best iPhone ever");
-        product1.setCategory(savedCategoy);
-        // product1.setPrice(savedPrice);
-        product1.setPrice(price);
-
-        Product savedProduct1 = productRepository.save(product1);
+//        Price price = new Price();
+//        price.setCurrency("INR");
+//        price.setValue(100000);
+//        // Price savedPrice = priceRepository.save(price);
+//
+//        Category category2 = new Category();
+//        category2.setName("Apple Devices");
+//        Category savedCategoy = categoryRepository.save(category2);
+//
+//        Product product1 = new Product();
+//        product1.setTitle("iPhone 15 pro");
+//        product1.setDescription("Best iPhone ever");
+//        product1.setCategory(savedCategoy);
+//        // product1.setPrice(savedPrice);
+//        product1.setPrice(price);
+//
+//        Product savedProduct1 = productRepository.save(product1);
 
 //        productRepository.deleteById(UUID.fromString("111bb398-e46e-49f8-a271-ca6869d16825"));
         List<Product> products = this.productRepository.findAll();
